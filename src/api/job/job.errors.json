@@ -1,0 +1,6 @@
+{
+  "5000": "Server Error",
+  "5001": "Job not found",
+  "5002": "Job Details is required",
+  "5003": "Job Id is required"
+}

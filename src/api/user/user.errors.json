@@ -1,0 +1,9 @@
+{
+  "6000": "Invalid value",
+  "6001": "email is required",
+  "6002": "phone is required",
+  "6003": "name is required",
+  "6004": "user not found",
+  "6005": "id is required",
+  "6006": "User Already Exist"
+}
