@@ -32,7 +32,7 @@ app.get("/api", (req, res) => {
 var whitelist = [
   "http://localhost:3000",
   "http://localhost:3001",
-  "https://seahorse-app-2q2ly.ondigitalocean.app",
+  "https://seahorse-app-2q2ly.ondigitalocean.app/",
 ];
 
 var corsOptions = {
