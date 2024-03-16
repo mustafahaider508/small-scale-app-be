@@ -29,7 +29,11 @@ app.get("/api", (req, res) => {
 });
 
 // ==== CORS Policy ==== //
-var whitelist = ["http://localhost:3000", "http://localhost:3001"];
+var whitelist = [
+  "http://localhost:3000",
+  "http://localhost:3001",
+  "https://seahorse-app-2q2ly.ondigitalocean.app",
+];
 
 var corsOptions = {
   origin: function (origin, callback) {
