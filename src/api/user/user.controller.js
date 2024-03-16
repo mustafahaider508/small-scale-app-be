@@ -42,8 +42,7 @@ const createUser = async (req, res, next) => {
       role: user.role,
       password: randomPassword,
     };
-    //adding data to redis it will retain for 1 min
-    await service.addDataToRedis({ user, url: req.originalUrl });
+
     return sendResponse(req, res, 2000, data);
   } catch (error) {
     return next({ code: 5000, status: 500, error: error.message });
