@@ -1,7 +1,14 @@
 // Middleware file
 const redis = require("redis");
 const sendResponse = require("../utils/response");
-const client = redis.createClient();
+const client = redis.createClient({
+  password: process.env.PASSWORD,
+  socket: {
+    host: process.env.HOST,
+    port: process.env.REDIS_PORT,
+  },
+});
+
 client.connect();
 
 async function redisMiddleware(req, res, next) {

@@ -5,7 +5,14 @@ const authUtils = require("../../common/contants.js");
 const User = require("../../models/userModal.js");
 
 // Create Redis Client
-const client = redis.createClient();
+const client = redis.createClient({
+  password: process.env.PASSWORD,
+  socket: {
+    host: process.env.HOST,
+    port: process.env.REDIS_PORT,
+  },
+});
+
 client.connect();
 
 const createUser = async (req, res, next) => {
@@ -35,7 +42,8 @@ const createUser = async (req, res, next) => {
       role: user.role,
       password: randomPassword,
     };
-
+    //adding data to redis it will retain for 1 min
+    await service.addDataToRedis({ user, url: req.originalUrl });
     return sendResponse(req, res, 2000, data);
   } catch (error) {
     return next({ code: 5000, status: 500, error: error.message });

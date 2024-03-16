@@ -2,10 +2,13 @@ const sendResponse = require("../../utils/response.js");
 const service = require("./job.service");
 const { v4: uuidv4 } = require("uuid");
 const Queue = require("bull");
+
 const jobQueue = new Queue("myQueue", {
   redis: {
-    host: "127.0.0.1",
-    port: 6379,
+    host: process.env.HOST,
+    port: process.env.REDIS_PORT,
+    username: process.env.USERNAME,
+    password: process.env.PASSWORD,
   },
 });
 

@@ -1,6 +1,14 @@
 const User = require("../../models/userModal.js");
 const redis = require("redis");
-const client = redis.createClient();
+
+const client = redis.createClient({
+  password: process.env.PASSWORD,
+  socket: {
+    host: process.env.HOST,
+    port: process.env.REDIS_PORT,
+  },
+});
+
 client.connect();
 const signUp = ({ name, email, phone, password }) => {
   return User.create({
