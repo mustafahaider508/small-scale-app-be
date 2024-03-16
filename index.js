@@ -28,11 +28,14 @@ app.get("/api", (req, res) => {
   res.send("Server is running ...!");
 });
 
+app.use(cors(corsOptions));
+
 // ==== CORS Policy ==== //
 var whitelist = [
   "http://localhost:3000",
   "http://localhost:3001",
-  "https://small-scale-app-fe.vercel.app/",
+  "https://small-scale-app-fe.vercel.app",
+  "https://dolphin-app-doevl.ondigitalocean.app",
 ];
 
 var corsOptions = {
@@ -47,8 +50,6 @@ var corsOptions = {
   },
   credentials: true,
 };
-
-app.use(cors(corsOptions));
 
 // ==== Private Routes ==== //
 app.use("*", auth);
